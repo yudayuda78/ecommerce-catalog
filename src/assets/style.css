@@ -90,7 +90,7 @@ table {
     position: absolute;
     width: 548px;
     height: 68px;
-    left: 470px;
+    left: 464px;
     top: 15px;
 
     font-family: 'Inter';
@@ -141,7 +141,7 @@ color: #3F3F3F;
     position: absolute;
     width: 97px;
     height: 34px;
-    left: 577px;
+    left: 460px;
     top: 269px;
 
     font-family: 'Inter';
@@ -186,22 +186,23 @@ color: #000000;
     position: absolute;
     width: 259px;
     height: 42px;
-    left: 577px;
-    top: 418px;
+    left: 457px;
+    top: 410px;
 }
 
 .category-button{
     width: 259px;
-    height: 42px;
+    height: 30px;
     margin-right: 10px;
+    background-color: #FFFFFF;
 }
 
 .second-button{
     position: absolute;
     width: 332px;
     height: 24px;
-    left: -230px;
-    top: -140px;
+    left: -110px;
+    top: -150px;
 }
 
 .category-button:hover{

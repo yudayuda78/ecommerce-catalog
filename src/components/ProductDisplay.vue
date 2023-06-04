@@ -45,7 +45,7 @@ export default{
             setTimeout(() => {
                 this.updateCurrentTitle();
                 this.isLoading = false;
-            }, 90000);
+            }, 1000);
         },
 
         updateCurrentTitle() {
@@ -92,11 +92,11 @@ export default{
                     <img :src="currentImage" alt="Product Image">
                 </div>
                 <div class="detail">
-                    <div class="title" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ color: titleColor }"> {{ currentTitle }}</div>
+                    <div class="title" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ color: titleColor }"> {{ isLoading ? 'Loading...' : currentTitle }}</div>
                     <div class="category" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'">{{ currentCategory }}</div>
                     <div class="description" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'">{{ currentDescription }}</div>
                     <div class="price" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ color: titleColor }">${{ currentPrice }}</div>
-                    <div class="aware" v-if="!(currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing')" >This product is unavailable to show</div>
+                    <div class="aware" v-if="!(currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing')" >{{ isLoading ? 'Loading...' : 'This product is unavailable to show' }}</div>
                     <div class="button">
                         <button class="category-button" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ borderColor: titleColor }">Buy</button>
                         <button class="category-button" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" @click="nextTitle" :style="{ borderColor: titleColor }">Next</button>
