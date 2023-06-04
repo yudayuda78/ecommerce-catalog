@@ -90,7 +90,7 @@ table {
     position: absolute;
     width: 548px;
     height: 68px;
-    left: 485px;
+    left: 470px;
     top: 15px;
 
     font-family: 'Inter';
@@ -100,20 +100,21 @@ table {
     line-height: 34px;
 
     color: #720060;
+    text-align: justify;
 }
 
 .category{
     position: absolute;
-width: 149px;
-height: 22px;
-left: 577px;
-top: 69px;
+    width: 149px;
+    height: 22px;
+    left: 455px;
+    top: 69px;
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 22px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 /* identical to box height */
 
 
@@ -124,15 +125,15 @@ color: #3F3F3F;
     position: absolute;
     width: 517px;
     height: 163px;
-    left: 520px;
-    top: 128px;
+    left: 465px;
+    top: 118px;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
-
+    text-align: justify;
     color: #1E1E1E
 }
 
@@ -161,3 +162,53 @@ img{
     left: 93px;
     top: 59px;
 }
+
+.aware{
+    position: absolute;
+    width: 332px;
+    height: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+color: #000000;
+}
+
+.button{
+    box-sizing: border-box;
+    display: flex;
+    position: absolute;
+    width: 259px;
+    height: 42px;
+    left: 577px;
+    top: 418px;
+}
+
+.category-button{
+    width: 259px;
+    height: 42px;
+    margin-right: 10px;
+}
+
+.second-button{
+    position: absolute;
+    width: 332px;
+    height: 24px;
+    left: -230px;
+    top: -140px;
+}
+
+.category-button:hover{
+    background-color: #720060;
+}
+
+/* .second-button{
+    position: absolute;
+    bottom: 100px;
+} */

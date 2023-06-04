@@ -12,28 +12,40 @@ export default{
             currentImage: '',
             currentCategoryColor: '',
             titleColor: '',
+            isLoading: false,
         }
     },
 
     mounted() {
         this.fetchData();
+        this.updateCurrentTitle()
     },
 
     methods:{
         fetchData() {
+            this.isLoading = true;
             fetch('https://fakestoreapi.com/products')
             .then(response => response.json())
             .then(data => {
                 this.products = data;
+                this.currentIndex = 0;
+                this.updateCurrentTitle();
+                this.isLoading = false;
             })
             .catch(error => {
                 console.error('Error:', error);
+                this.isLoading = false;
             });
         },
 
         nextTitle() {
+            this.isLoading = true;
             this.currentIndex++;
             this.updateCurrentTitle();
+            setTimeout(() => {
+                this.updateCurrentTitle();
+                this.isLoading = false;
+            }, 90000);
         },
 
         updateCurrentTitle() {
@@ -56,7 +68,12 @@ export default{
                 this.currentCategoryColor = '#DCDCDC';
                 this.titleColor = '';
             }
-        }
+
+
+
+        },
+
+
 
         
 
@@ -68,6 +85,7 @@ export default{
 <template>
     <div>
         <div class="container">
+            <div v-if="isLoading" class="loading">Loading...</div>
             <div class="back1" :style="{ backgroundColor: currentCategoryColor }"></div>
             <div class="card">
                 <div class="img" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'">
@@ -77,10 +95,12 @@ export default{
                     <div class="title" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ color: titleColor }"> {{ currentTitle }}</div>
                     <div class="category" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'">{{ currentCategory }}</div>
                     <div class="description" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'">{{ currentDescription }}</div>
-                    <div class="price" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ color: titleColor }">{{ currentPrice }}</div>
+                    <div class="price" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ color: titleColor }">${{ currentPrice }}</div>
+                    <div class="aware" v-if="!(currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing')" >This product is unavailable to show</div>
                     <div class="button">
-                        <button v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'">Buy</button>
-                        <button @click="nextTitle">Next</button>
+                        <button class="category-button" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" :style="{ borderColor: titleColor }">Buy</button>
+                        <button class="category-button" v-if="currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing'" @click="nextTitle" :style="{ borderColor: titleColor }">Next</button>
+                        <button class="category-button second-button" v-if="!(currentCategory === 'men\'s clothing' || currentCategory === 'women\'s clothing')" @click="nextTitle" :style="{ borderColor: titleColor}">Next</button>
                     </div>
                 </div>
             </div>
